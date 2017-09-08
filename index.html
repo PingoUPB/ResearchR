@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js" lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="View and manage bibliography links in your browser.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- http://getbootstrap.com/docs/4.0/utilities/text/#–text-alignment -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+        <!-- own styles -->
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- http://simplelineicons.com -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js" async defer></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 col-md-3">
+                    <nav class="row alert alert-info text-nowrap" style="margin-left: 0; margin-right: 0;">
+                            <h5 class="col-lg-6">
+                                ResearchR
+                                <br>
+                                <small style="font-size: 8pt;">Made by <a href="https://github.com/PingoUPB"><span class="icon-social-github"></span> Winfo2@UPB</a></small>
+                            </h5>
+                            <div class="col-lg-6 text-right">
+                                <a class="btn btn-light" id="csvButton"><span class="icon-arrow-up-circle"> </span> CSV öffnen</a>
+                                <input id="csvFileInput" type="file" style="position:fixed;top:-1000px;" accept=".csv">
+                            </div>
+                    </nav>
+                    <section>
+                        <form>
+                            <div class="card text-white bg-danger mb-3 not-accepted" style="opacity: 0.7;">
+                                <div class="card-header"><span class="icon-dislike"> </span>Paper ungeeignet?</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="notSuitableRadios" id="nsRadios1" value="NO_Title" required>
+                                            Titel passt nicht.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="notSuitableRadios" id="nsRadios2" value="NO_Abstract" required>
+                                            Abstract passt nicht.
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="notSuitableRadios" id="nsRadios3" value="NO_Method" required>
+                                            Methodik nicht geeignet.
+                                        </label>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-success mb-3 accepted">
+                                <div class="card-header"><span class="icon-like"> </span> Paper geeignet?</div>
+
+                                <div class="card-body">
+                                    <p class="card-text">
+
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="notSuitableRadios" id="nsRadios4" value="YES" checked required>
+                                            <strong>JA</strong>, Paper ist geeignet
+                                        </label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="journal"><strong><u>Journal</u>-Titel</strong></label>
+                                        <input class="form-control" id="journal" value="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="authors"><strong>Paper-Autoren</strong></label>
+                                        <input class="form-control" id="authors" value="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="title"><strong><u>Paper</u>-Titel</strong></label>
+                                        <input class="form-control" id="title" value="" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="abstract"><strong>Paper-Abstract</strong></label>
+                                        <textarea class="form-control" id="abstract" placeholder="Paper-Abstract oder Zusammenfassung">
+Lorem ipsum dolor sit.
+                                </textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="notes">Notizen</label>
+                                        <textarea class="form-control" id="notes" placeholder="Kommentare oder Notizen zum Paper">
+Lorem ipsum dolor sit.
+                                </textarea>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <p class="card-text text-center">
+                                        <button class="btn btn-secondary col-lg-2" id="backBtn"><span class="icon-arrow-left"></span> </button>
+                                        <button class="btn btn-primary col-lg-9" type="submit"><span class="icon-check"></span> <strong>Speichern</strong></button><br><br>
+                                        <a href="#" class="btn-secondary btn btn-sm col-lg-11" id="nextBtn">ohne Speichern überspringen <span class="icon-arrow-right"></span></a>
+                                        <br><hr><br>
+                                        <a href="#" class="btn-success btn btn-sm col-lg-11" id="exportBtn"><span class="icon-arrow-down-circle"> </span> Zwischenstand als CSV speichern</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </form>
+                    </section>
+                </div>
+                <div class="col" >
+                    <p><span class="icon-info"> </span>Paper <span id="docIndex">?</span> von <span id="docTotal">?</span> (ID: <span id="docId">?</span>) | Unbearbeitete: <span id="pendingCount">?</span>
+                        <strong><a id="docLink" class="float-right" href="about:blank" target="_blank"><span class="icon-link"> </span>Link zu Paper in neuem Tab öffnen</a></strong>
+                    </p>
+                    <div class="alert alert-danger iframe-error" role="alert" style="display: none;">
+                        Beim Laden des iFrames mit dem Paper ist ein <strong>Fehler</strong> aufgetreten.<br>
+                        Wahrscheinlich hat der Seitenbetreiber das Anzeigen in Frames verboten.<br>
+                        <strong>Öffnen Sie die Seite bitte über den Link oben rechts manuell.</strong>
+                    </div>
+                    <iframe src="about:blank" class="embed-responsive-item w-100" style="min-height: 93%; height: 1100px;" id="iframe"></iframe>
+                    <p class="text-muted text-center"><small>(Falls im Fenster oben kein Paper angezeigt wird, dieses bitte mit dem Links oben rechts in einem neuen Tab öffnen.)</small></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- https://pouchdb.com -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.3.4/pouchdb.js" integrity="sha256-zKbpvS0SQzJWBXLTq3dwVPRs9HAtSBqZHmtcV/sZoU4=" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.slim.min.js"><\/script>')</script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+        <script src="js/vendor/autosize.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.3/jquery.csv.js" integrity="sha256-xKWJpqP3ZjhipWOyzFuNmG2Zkp1cW4nhUREGBztcSXs=" crossorigin="anonymous"></script>
+<!-- DEBUG:        <script src="js/vendor/jquery.csv.debug.js"></script> -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js" integrity="sha256-FPJJt8nA+xL4RU6/gsriA8p8xAeLGatoyTjldvQKGdE=" crossorigin="anonymous"></script>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,13 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Darius Schlangenotto - Product Owner - Winfo2@UPB
+    Michael Whittaker - Developer - Winfo2@UPB
+
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    jQuery, Bootstrap, FileSaver, PouchDB
