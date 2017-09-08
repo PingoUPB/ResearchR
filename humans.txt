@@ -9,5 +9,10 @@
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5
-    jQuery, Bootstrap, FileSaver, PouchDB
+    HTML5
+    jQuery, Bootstrap, PouchDB
+    jquery-csv, FileSaver.js, Simple Line Icons, autosize.js
+
+# MORE
+
+    "Look ma', no server!" :)
